@@ -1,4 +1,4 @@
-<?
+<?php
 class Database {
     private static $instance = null;
     private $connection;
@@ -15,9 +15,18 @@ class Database {
 
             $this->connection = new PDO($dsn, DB_USER, DB_PASS, $options);
         } catch (PDOException $e) {
-            error_log("Database Connection Error!", $e->getMessage());
-            die(json_encode(['error' => 'Database Connection Failed']));
-        }   
+            // Log the error message for server logs
+            error_log("Database Connection Error: " . $e->getMessage());
+
+            // Ensure we return a JSON error response with HTTP 500 when possible
+            if (!headers_sent()) {
+                http_response_code(500);
+                header('Content-Type: application/json');
+            }
+
+            echo json_encode(['error' => 'Database Connection Failed']);
+            exit;
+        }
     }
 
     public static function getInstance(){

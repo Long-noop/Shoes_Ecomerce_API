@@ -2,7 +2,7 @@
 require_once ROOT_PATH . "/core/JWT.php";
 class Auth {
     public static function login($email, $password){
-        require_once ROOT_PATH . "models/User.php";
+    require_once ROOT_PATH . '/models/User.php';
         $userModel = new User();
         $user = $userModel->findByEmail($email);
         if (!$user || !password_verify($password, $user['password'])) {

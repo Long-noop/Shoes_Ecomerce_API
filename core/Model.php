@@ -39,7 +39,7 @@ class Model {
         $placeholders = array_map(function($field){
             return ":$field";
         }, $fields);
-        $sql = "INSERT INTO {$this->table} (" . implode('.', $fields) . "VALUES (" . implode('.', $placeholders) . ")";
+        $sql = "INSERT INTO {$this->table} (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
         $stmt = $this->db->prepare($sql);
 
         foreach($data as $key => $value){

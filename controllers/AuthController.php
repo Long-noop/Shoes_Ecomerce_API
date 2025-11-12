@@ -1,11 +1,11 @@
 <?php
-require_once ROOT_PATH . "core/Controller.php";
+require_once ROOT_PATH . '/core/Controller.php';
 class AuthController extends Controller {
     private $userModel;
 
     public function __construct() {
         parent::__construct();
-        $this->userModel = $this->model('User');
+        $this->userModel = $this->model("User");
     }
 
     public function register() {
