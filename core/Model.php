@@ -76,7 +76,7 @@ class Model {
         return $stmt->execute();
     }
 
-    public function count($where) {
+    public function count($where = "") {
         $sql = "SELECT COUNT(*) as total FROM {$this->table}";
         if ($where) {
             $sql .= " WHERE $where";

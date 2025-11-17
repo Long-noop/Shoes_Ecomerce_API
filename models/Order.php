@@ -87,7 +87,7 @@ class Order extends Model {
     public function updateStatus($orderId, $status) {
         return $this->update($orderId, [
             'status' => $status,
-            'updated_at' => date('Y-m-d H:i:s')
+            // 'updated_at' => date('Y-m-d H:i:s')
         ]);
     }
 

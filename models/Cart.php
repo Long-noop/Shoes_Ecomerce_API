@@ -5,7 +5,7 @@ class Cart extends Model {
     protected $table = 'cart';
 
     public function findByUserId($userId) {
-        $sql = "SELECT c.*, p.name, p.price, p.image, p.stock 
+        $sql = "SELECT c.*, p.name, p.price, p.image_url, p.stock 
                 FROM {$this->table} c 
                 LEFT JOIN products p ON c.product_id = p.id 
                 WHERE c.user_id = :user_id";

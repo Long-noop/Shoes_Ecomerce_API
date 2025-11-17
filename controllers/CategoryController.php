@@ -47,7 +47,7 @@ class CategoryController extends Controller {
         $validator = new Validator();
         $rules = [
             'name' => 'required',
-            'slug' => 'required'
+            // 'slug' => 'required'
         ];
 
         if (!$validator->validate($this->request->all(), $rules)) {
@@ -61,7 +61,7 @@ class CategoryController extends Controller {
         }
 
         $data = $this->request->all();
-        $data['created_at'] = date('Y-m-d H:i:s');
+        // $data['created_at'] = date('Y-m-d H:i:s');
 
         $categoryId = $this->categoryModel->create($data);
 
@@ -91,7 +91,7 @@ class CategoryController extends Controller {
         }
 
         $data = $this->request->all();
-        $data['updated_at'] = date('Y-m-d H:i:s');
+        // $data['updated_at'] = date('Y-m-d H:i:s');
 
         $success = $this->categoryModel->update($id, $data);
 
@@ -123,7 +123,7 @@ class CategoryController extends Controller {
         $success = $this->categoryModel->delete($id);
 
         if ($success) {
-            $this->response->success('Category deleted successfully');
+            $this->response->success('Category deleted successfully', null  );
         } else {
             $this->response->error('Failed to delete category', 500);
         }

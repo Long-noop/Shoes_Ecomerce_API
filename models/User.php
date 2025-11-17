@@ -21,9 +21,9 @@ class User extends Model {
     }
 
     public function updateProfile($id ,$data) {
-        $allowedFields = ['first_name', 'last_name', 'phone', 'date_of_birth', 'gender', 'avatar'];
+        $allowedFields = ['first_name', 'last_name', 'phone', 'date_of_birth', 'gender', 'avatar', 'role'];
         $updateData = array_intersect_key($data, array_flip($allowedFields));
-        $updateData['updated_at'] = date('Y-m-d H:i:s');
+        // $updateData['updated_at'] = date('Y-m-d H:i:s');
 
         return $this->update($id, $updateData);
     }

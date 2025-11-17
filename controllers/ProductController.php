@@ -72,7 +72,7 @@ class ProductController extends Controller {
         }
 
         $data = $this->request->all();
-        $data['updated_at'] = date('Y-m-d H:i:s');
+        // $data['updated_at'] = date('Y-m-d H:i:s');
 
         $success = $this->productModel->update($id, $data);
 
@@ -95,7 +95,7 @@ class ProductController extends Controller {
         $success = $this->productModel->delete($id);
 
         if ($success) {
-            $this->response->success('Product deleted');
+            $this->response->success('Product deleted', null);
         } else {
             $this->response->error('Failed to delete product', 500);
         }

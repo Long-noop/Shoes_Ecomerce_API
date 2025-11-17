@@ -14,9 +14,6 @@ $router->put('/api/admin/categories/{id}', ['CategoryController', 'update']);
 $router->delete('/api/admin/categories/{id}', ['CategoryController', 'destroy']);
 
 // Orders Management
-$router->get('/api/admin/orders', ['OrderController', 'index']);
-$router->get('/api/admin/orders/{id}', ['OrderController', 'show']);
-$router->put('/api/admin/orders/{id}/status', ['OrderController', 'updateStatus']);
 
 // Users Management
 $router->get('/api/admin/users', ['UserController', 'index']);
@@ -32,13 +29,19 @@ $router->put('/api/admin/blogs/{id}', ['BlogController', 'update']);
 $router->delete('/api/admin/blogs/{id}', ['BlogController', 'destroy']);
 
 // Comments Management
-$router->get('/api/admin/comments', ['CommentController', 'index']);
-$router->delete('/api/admin/comments/{id}', ['CommentController', 'destroy']);
+$router->put('/api/admin/comments/{id}/approvation', ['CommentController', 'approve']);
+$router->put('/api/admin/comments/{id}/rejection', ['CommentController', 'reject']);
 
 // Contacts Management
 $router->get('/api/admin/contacts', ['ContactController', 'index']);
+$router->get('/api/admin/contacts/{id}', ['ContactController', 'show']);
 $router->put('/api/admin/contacts/{id}/status', ['ContactController', 'updateStatus']);
 $router->delete('/api/admin/contacts/{id}', ['ContactController', 'destroy']);
+
+// FAQ Management
+$router->post('/api/admin/faqs', ['FAQController', 'store']);
+$router->put('/api/admin/faqs/{id}/status', ['FAQController', 'update']);
+$router->delete('/api/admin/faqs/{id}', ['FAQController', 'destroy']);
 
 // File Upload
 $router->post('/api/admin/upload', ['UploadController', 'upload']);
